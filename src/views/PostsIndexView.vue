@@ -4,7 +4,7 @@ import axios from "axios";
 export default {
   data: function () {
     return {
-      message: "Posts",
+      message: "Blog",
       posts: [],
     };
   },
@@ -25,12 +25,13 @@ export default {
 <template>
   <div class="posts">
     <h1>{{ message }}</h1>
+    <router-link to="/posts/new">Create Post</router-link>
     <p v-for="post in posts" v-bind:key="post.id">
       User: {{ post.user_id }}
       <br />
       Title: {{ post.title }}
       <br />
-      <img :src="post.image" />
+      <img :src="post.image" width="500" />
       <br />
       {{ post.body }}
       <br />

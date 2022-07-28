@@ -3,7 +3,8 @@ import HomeView from "../views/HomeView.vue";
 import SignupView from "../views/SignupView.vue";
 import LoginView from "../views/LoginView.vue";
 import LogoutView from "../views/LogoutView.vue";
-import PostIndexView from "../views/PostIndexView.vue";
+import PostsIndexView from "../views/PostsIndexView.vue";
+import PostsNewView from "../views/PostsNewView.vue";
 
 const routes = [
   {
@@ -22,7 +23,8 @@ const routes = [
   { path: "/signup", name: "signup", component: SignupView },
   { path: "/login", name: "login", component: LoginView },
   { path: "/logout", name: "logout", component: LogoutView },
-  { path: "/posts", name: "posts", component: PostIndexView },
+  { path: "/posts", name: "posts-index", component: PostsIndexView },
+  { path: "/posts/new", name: "posts-new", component: PostsNewView },
 ];
 
 const router = createRouter({
