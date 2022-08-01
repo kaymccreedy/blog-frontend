@@ -29,7 +29,7 @@ export default {
     <p v-for="post in posts" v-bind:key="post.id">
       User: {{ post.user_id }}
       <br />
-      Title: {{ post.title }}
+      {{ post.title }}
       <br />
       <img :src="post.image" width="500" />
       <br />
