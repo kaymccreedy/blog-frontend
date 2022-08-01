@@ -29,9 +29,9 @@ export default {
     <p v-for="post in posts" v-bind:key="post.id">
       User: {{ post.user_id }}
       <br />
-      {{ post.title }}
-      <br />
-      <img :src="post.image" width="500" />
+      <router-link :to="`/posts/${post.id}`">
+        {{ post.title }}
+      </router-link>
       <br />
       {{ post.body }}
       <br />

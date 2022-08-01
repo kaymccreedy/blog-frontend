@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     showPost: function () {
-      axios.get("posts/" + this.$route.params.id + "json").then((response) => {
+      axios.get("posts/" + this.$route.params.id).then((response) => {
         this.post = response.data;
         console.log("Post", this.post);
       });
@@ -23,14 +23,12 @@ export default {
 
 <template>
   <div class="post">
-    <div class="container">
-      <h4>{{ post.title }}</h4>
-      <img :src="post.image" width="500" />
-      <br />
-      <p>{{ post.body }}</p>
-      <br />
-      <br />
-    </div>
+    <h4>{{ post.title }}</h4>
+    <img :src="post.image" width="500" />
+    <br />
+    <p>{{ post.body }}</p>
+    <br />
+    <br />
     <router-link to="/posts">Back to Posts</router-link>
   </div>
 </template>
