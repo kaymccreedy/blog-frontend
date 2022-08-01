@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     showPost: function () {
-      axios.get("posts/" + this.$route.params.id).then((response) => {
+      axios.get("/posts/" + this.$route.params.id).then((response) => {
         this.editPostParams = response.data;
         console.log("Post", this.post);
       });
