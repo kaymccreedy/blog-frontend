@@ -30,5 +30,7 @@ export default {
     <br />
     <br />
     <router-link to="/posts">Back to Posts</router-link>
+    |
+    <router-link :to="`/posts/${post.id}/edit`">Edit Post</router-link>
   </div>
 </template>
