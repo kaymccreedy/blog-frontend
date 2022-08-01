@@ -12,7 +12,7 @@ export default {
   },
   methods: {
     showPost: function () {
-      axios.get("posts/1").then((response) => {
+      axios.get("posts/" + this.$route.params.id + "json").then((response) => {
         this.post = response.data;
         console.log("Post", this.post);
       });

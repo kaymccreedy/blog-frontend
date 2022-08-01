@@ -4,8 +4,6 @@
     |
     <router-link to="/posts">Posts</router-link>
     |
-    <router-link to="/posts/1">Post 1</router-link>
-    |
     <router-link to="/signup">Signup</router-link>
     |
     <router-link to="/login">Login</router-link>
