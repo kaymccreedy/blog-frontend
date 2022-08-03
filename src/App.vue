@@ -3,11 +3,14 @@ export default {
   data: function () {
     return {
       isLoggedIn: false,
+      flashMessage: "",
     };
   },
   watch: {
     $route: function () {
       this.isLoggedIn = !!localStorage.jwt;
+      this.flashMessage = localStorage.getItem("flashMessage");
+      localStorage.removeItem("flashMessage");
     },
   },
 };
@@ -16,7 +19,7 @@ export default {
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Blg</a>
+      <a class="navbar-brand" href="/">Blg</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -46,6 +49,7 @@ export default {
       </div>
     </div>
   </nav>
+  <div v-if="flashMessage" v-on:click="this.flashMessage = ''" class="alert alert-success">{{ flashMessage }}</div>
   <router-view />
 </template>
 
@@ -54,5 +58,13 @@ body,
 #app {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   background-image: url("./assets/dot-grid.png");
+  width: 99vw;
+  margin-left: -40px;
+  padding-left: 40px;
+}
+
+nav {
+  width: 100vw;
+  margin-left: -40px;
 }
 </style>

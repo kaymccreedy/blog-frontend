@@ -23,6 +23,7 @@ export default {
         .patch("/posts/" + this.$route.params.id, this.editPostParams)
         .then((response) => {
           console.log(response.data);
+          localStorage.setItem("flashMessage", "Post Updated");
           this.$router.push("/posts");
         })
         .catch((error) => {

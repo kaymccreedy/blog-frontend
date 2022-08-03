@@ -15,6 +15,7 @@ export default {
         .post("/posts", this.newPostParams)
         .then((response) => {
           console.log(response.data);
+          localStorage.setItem("flashMessage", "Post Created");
           this.$router.push("/posts");
         })
         .catch((error) => {
