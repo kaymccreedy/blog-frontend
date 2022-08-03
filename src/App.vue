@@ -1,3 +1,18 @@
+<script>
+export default {
+  data: function () {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  watch: {
+    $route: function () {
+      this.isLoggedIn = !!localStorage.jwt;
+    },
+  },
+};
+</script>
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -19,13 +34,13 @@
             <a class="nav-link" href="/posts">Posts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/signup">Signup</a>
+            <a v-if="!isLoggedIn" class="nav-link" href="/signup">Signup</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
+            <a v-if="!isLoggedIn" class="nav-link" href="/login">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/logout">Logout</a>
+            <a v-if="isLoggedIn" class="nav-link" href="/logout">Logout</a>
           </li>
         </ul>
       </div>
@@ -35,6 +50,7 @@
 </template>
 
 <style>
+body,
 #app {
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   background-image: url("./assets/dot-grid.png");

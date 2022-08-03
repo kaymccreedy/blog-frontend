@@ -6,6 +6,8 @@ export default {
     return {
       message: "Blog",
       posts: [],
+      users: [],
+      currentPost: [],
     };
   },
   created: function () {
@@ -18,6 +20,12 @@ export default {
         console.log("All Posts: ", this.posts);
       });
     },
+    indexUsers: function () {
+      axios.get("users").then((response) => {
+        this.users = response.data;
+        console.log("All Users: ", this.users);
+      });
+    },
   },
 };
 </script>
@@ -26,7 +34,13 @@ export default {
   <div class="posts">
     <h1>{{ message }}</h1>
     <router-link to="/posts/new">Create Post</router-link>
-    <p v-for="post in posts" v-bind:key="post.id">
+    <p
+      v-for="post in posts"
+      v-bind:key="post.id"
+      v-on:click="currentPost = post"
+      v-bind:class="{ selected: post === currentPost }"
+    >
+      <br />
       User: {{ post.user_id }}
       <br />
       <router-link :to="`/posts/${post.id}`">
@@ -39,3 +53,9 @@ export default {
     </p>
   </div>
 </template>
+
+<style>
+.selected {
+  background-color: #fcfbf7;
+}
+</style>
