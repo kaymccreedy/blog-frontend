@@ -1,5 +1,6 @@
 <script>
 import axios from "axios";
+import moment from "moment";
 
 export default {
   data: function () {
@@ -8,6 +9,7 @@ export default {
       posts: [],
       users: [],
       currentPost: [],
+      titleFilter: "",
     };
   },
   created: function () {
@@ -26,6 +28,16 @@ export default {
         console.log("All Users: ", this.users);
       });
     },
+    relativeDate: function (date) {
+      return moment(date).fromNow();
+    },
+    filterPosts: function () {
+      return this.posts.filter((post) => {
+        var lowerTitle = post.title.toLowerCase();
+        var lowerTitleFilter = this.titleFilter.toLowerCase();
+        return lowerTitle.includes(lowerTitleFilter);
+      });
+    },
   },
 };
 </script>
@@ -33,9 +45,13 @@ export default {
 <template>
   <div class="posts">
     <h1>{{ message }}</h1>
+    <br />
+    <input v-model="titleFilter" />
+    &nbsp;|&nbsp;
     <router-link to="/posts/new">Create Post</router-link>
+    <br />
     <p
-      v-for="post in posts"
+      v-for="post in filterPosts()"
       v-bind:key="post.id"
       v-on:click="currentPost = post"
       v-bind:class="{ selected: post === currentPost }"
@@ -48,6 +64,10 @@ export default {
       </router-link>
       <br />
       {{ post.body }}
+      <br />
+      <small>
+        <em>Updated: {{ relativeDate(post.updated_at) }}</em>
+      </small>
       <br />
       <br />
     </p>

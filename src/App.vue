@@ -59,6 +59,7 @@ body,
   font-family: "Big Caslon", "Book Antiqua", "Palatino Linotype", Georgia, serif;
   background-image: url("./assets/dot-grid.png");
   width: 99vw;
+  margin: auto;
   margin-left: -40px;
   padding-left: 40px;
 }
@@ -66,5 +67,9 @@ body,
 nav {
   width: 100vw;
   margin-left: -40px;
+}
+
+a {
+  color: brown;
 }
 </style>
