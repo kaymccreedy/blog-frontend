@@ -72,4 +72,8 @@ nav {
 a {
   color: brown;
 }
+
+.smaller {
+  font-size: smaller;
+}
 </style>
